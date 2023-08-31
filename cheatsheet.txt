@@ -1,0 +1,117 @@
+Ctrl + c  /  ESC                        -> normal mode
+i                                       -> insert mode (before char)
+a                                       -> insert mode (after char)
+Shift + i                               -> insert mode line start
+Shift + a                               -> insert mode line end (append)
+v                                       -> visual mode
+Shift + v                               -> visual mode line
+Ctrl + v                                -> visual mode block
+
+VISUAL-BLOCK-MODE $ A                   -> append at end of every line
+
+:q                                      -> quit current window
+:qa                                     -> quit all windows
+:w                                      -> save current buffer/window
+ZZ                                      -> :wq
+
+Ctrl + w, q                             -> close current window
+Ctrl + w, o                             -> close all but current window
+Ctrl + w, w                             -> window below-right (or up-left)
+Ctrl + w, Up/Down/Left/Right            -> window up/down/left/right
+
+:term                                   -> open a terminal
+Ctrl + w, Ctrl + f                      -> toggle FileTree
+Ctrl + space                            -> open Autocompletion / select next
+Ctrl + Alt + d                          -> close debugView
+
+Ctrl + v                                -> open in a new vertical window
+Ctrl + x                                -> open in a new horizontal window
+
+:'<,'> COMMAND                          -> apply COMMAND to every selected line
+VISUAL-MODE :                           -> becomes :'<,'> 
+
+INSERT/CMD-MODE Ctrl-r +                -> insert from system clipboard
+INSERT/CMD-MODE Ctrl-r "                -> insert from nvim clipboard
+
+viw                                     -> select whole word under cursor
+vip                                     -> select whole paragraph
+vi{                                     -> selects everthing between {}
+                                        ",',(,[,< instead of { works too
+cw                                      -> change word (remove and go into insert mode)
+cc                                      -> change line
+
+:s/FROM/TO                              -> replace FROM to TO in current line (only first occurence)
+:s/FROM/TO/g                            -> replace FROM to TO in current line (every occurence)
+:%s/FROM/TO                             -> search in whole file for FROM and replace first occurence
+:%s/FROM/TO/g                           -> search in whole file for FROM and replace every occurence
+:s/\(\w.*\)/"\1"                        -> replace line(from word start (\w)) and put "" around it 
+                                                (replace with "\1" -> \1 = selection)
+
+:ar **                                  -> all files to arguments
+:ar **/*.rs                             -> all .rs files to arguments
+:argdo CMD                              -> execute CMD in all argument files
+:argdo update                           -> save changes in argument files
+:argdo %s/FIND/REPLACE/ge               -> replace all FIND words in argument files
+:argdo %s/\s\+$//e | update             -> remove all trailing whitespaces
+
+/                                       -> search text in current file
+*                                       -> search word under cursor
+g*                                      -> like * but no word boundary
+n                                       -> go to next result
+Shift + n                               -> go to previous result
+Ctrl + l, :noh                          -> clear highlighted results
+gn                                      -> select next search result
+cgn                                     -> change next search result (really useful combined with ".")
+
+!sort                                   -> sort selection (-r for reversed)
+!date                                   -> insert date
+!bc                                     -> calculate
+!!                                      -> becomes :.! for normal mode
+
+g Ctrl-g                                -> word/byte count, col, line
+
+<<                                      -> indent line left
+>>                                      -> indent line right
+<                                       -> indent selected lines left
+>                                       -> indent selected lines right
+
+VISUAL-MODE y                           -> copy selected text
+VISUAL-MODE p                           -> past
+VISUAL-MODE d                           -> cut selected text
+VISUAL-MODE o                           -> switch between start and end of selection
+yy                                      -> copy line
+dd                                      -> cut line
+
+e                                       -> move cursor to the word's end
+w                                       -> move cursor to the next word's start
+gg                                      -> go to first line
+Shift + g                               -> go to last line
+$                                       -> go to line end
+0                                       -> go to line start
+^                                       -> go to first non blank char
+%                                       -> go to the other corosponding bracket (),{},[],<>
+f + KEY                                 -> move to next KEY current line
+F + KEY                                 -> move to prev KEY current line
+,                                       -> prev result
+;                                       -> next result
+Ctrl + u                                -> move view up (half a screen)
+Ctrl + d                                -> move view down (half a screen)
+Ctrl + o                                -> go to last jump
+Ctrl + i                                -> go to next jump
+
+:ab stuff expand to                     -> if you write 'stuff' it 'expands to'
+:una stuff                              -> remove abbreviate stuff
+:abc   /   :abclear                     -> remove/clear all abbreviates
+Ctrl + w (Ctrl + q)                     -> prevent expansion
+
+q KEY                                   -> start recording a macro and save it in KEY
+q                                       -> end recording
+@KEY                                    -> execute the macro saved in KEY
+NUM@KEY                                 -> execute the macro in KEY NUM-times
+
+Ctrl + x                                -> decrement selected numbers
+Ctrl + a                                -> increment selected numbers
+g Ctrl + a                              -> increment selected numbers by ++row (+1,+2,+3,...)
+
+u                                       -> Undo
+Ctrl + r                                -> Redo
